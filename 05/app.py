@@ -31,14 +31,10 @@ st.title("医学数据统计分析与可视化平台")
 
 menu = st.sidebar.radio("选择功能模块", [
     "数据上传", "预处理", "异常值检测", "t检验", "统计拓展分析",
-    "回归分析", "主成分分析", "聚类分析", "模型评估",
+    "回归分析", "主成分分析", "聚类分析", "模型评估","生存分析",
     "模型预测", "统计辅助分析", "特征选择", "数据导出",
     "绘图展示", "GBD分析", "报告总览", "生成报告"
 ])
-
-
-
-
 
 # 上传数据
 # 上传数据
@@ -376,6 +372,11 @@ elif menu == "模型评估":
                 st.error(f"模型评估失败：{e}")
     else:
         st.warning("请先上传数据")
+
+#生存分析
+elif menu == "生存分析":
+    from modules import survival_analysis
+    survival_analysis.run_survival_analysis()
 
 #模型预测
 elif menu == "模型预测":
@@ -843,4 +844,3 @@ elif menu == "生成报告":
 
     st.markdown("---")
     st.markdown(md_report)
-
